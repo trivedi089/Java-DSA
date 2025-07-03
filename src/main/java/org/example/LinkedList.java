@@ -4,34 +4,52 @@ import java.util.Scanner;
 
 public class LinkedList {
 
-    public class Node{}{
-        int data;
-        Node next;
+    public static class Node{
+        public int data;
+        public Node next;
     }
 
     public static void main(String[] args) {
 
-        LinkedList list = new LinkedList();
-        System.out.println("Choose wha you want to do : /n" +
-                "1. Insertion" +
-                "2. Deletion" +
-                "3. Merge in between");
-        Scanner sc = new Scanner(System.in);
-        int choice = sc.nextInt();
-        if (choice == 1) {
-            System.out.print("How many elements do you want to insert : ");
-            int n = sc.nextInt();
-            for (int i = 0; i < n; i++) {
-                int element = sc.nextInt();
-                insertElement(list, element)
-            }
+        Node head = new Node();
+        head.data=2;
+        head.next=null;
+
+        Node second = new Node();
+        second.data=3;
+        second.next=null;
+
+        head.next=second;
+
+        Node third = new Node();
+        third.data=4;
+        third.next=null;
+
+        head.next.next=third;
+
+        Node fourth = new Node();
+        fourth.data=5;
+        fourth.next=null;
+        head.next.next.next=fourth;
+
+        Node fifth = new Node();
+        fifth.data=6;
+        fifth.next=null;
+        head.next.next.next=fifth;
+
+        //deleting node containing data 4
+        Node deleteNode = head;
+        while(deleteNode.next.data!=4){
+            deleteNode=deleteNode.next;
         }
+        deleteNode.next=deleteNode.next.next;
 
-    }
 
-    static void insertElement(LinkedList list, int element){
-        Node newNode = new Node(element,null);
-        list->Node=newNode;
+        Node temp = head;
+        while(temp!=null){
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
     }
 
 }
